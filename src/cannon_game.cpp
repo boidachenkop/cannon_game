@@ -1,8 +1,8 @@
 /*
 * @Author: Pavlo Boidachenko
 * @Date:   2019-01-08 19:15:02
-* @Last Modified by:   pavlo
-* @Last Modified time: 2019-01-10 19:03:13
+* @Last Modified by:   Pavlo Boidachenko
+* @Last Modified time: 2019-01-11 13:07:07
 */
 
 #include "cannon_game.hpp"
@@ -17,7 +17,7 @@ Game::Game(){
 
 void Game::buildScene(){
 	root->addChild(cannon->get());
-	// root->addChild(getSurface());
+	root->addChild(getSurface());
 	// root->addChild(addPrimitive());
 	root->addChild(getSky());
 }

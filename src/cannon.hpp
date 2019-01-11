@@ -24,9 +24,8 @@ private:
 	ref_ptr<MatrixTransform> cannon;
 	ref_ptr<Group> _root;
 	double rotx, roty; // rotation vector
-	double x, y, z; // front cannon vector  
+	Vec4d front_vec; // front cannon vector  
 	double angle;
-	double cannon_angle;
 };
 
 #endif //CANNON_BP

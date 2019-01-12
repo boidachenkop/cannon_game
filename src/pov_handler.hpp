@@ -7,6 +7,7 @@
 #include <osgGA/NodeTrackerManipulator>
 #include <osgGA/KeySwitchMatrixManipulator>
 #include <osgGA/TrackballManipulator>
+#include <osgGA/TrackballManipulator>
 
 #include "cannon.hpp"
 

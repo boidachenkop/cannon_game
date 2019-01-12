@@ -2,7 +2,7 @@
 * @Author: Pavlo Boidachenko
 * @Date:   2019-01-10 16:47:47
 * @Last Modified by:   Pavlo Boidachenko
-* @Last Modified time: 2019-01-12 16:28:05
+* @Last Modified time: 2019-01-12 16:41:24
 */
 
 #include <iostream>
@@ -40,7 +40,7 @@ Vec3d CannonBall::trajectory(double t, Vec3d direction){
 	return (v0-(g/beta))*(1/beta)*(1-pow(M_E, -beta*t))+(g/beta)*t;
 }
 
-Target* CannonBall::collisionDetected(Vec3d coords){
+bool CannonBall::collisionDetected(Vec3d coords){
 	Vec3d target_pos;
 	double sphere_radius = 100;
 	for(auto it : *_targets){
@@ -48,13 +48,13 @@ Target* CannonBall::collisionDetected(Vec3d coords){
 		if(coords.x()<target_pos.x()+sphere_radius && coords.x()>target_pos.x()-sphere_radius &&
 			coords.y()<target_pos.y()+sphere_radius && coords.y()>target_pos.y()-sphere_radius &&
 			coords.z()<target_pos.z()+sphere_radius && coords.z()>target_pos.z()-sphere_radius){
-			return it;
+			return true;
 		}
 	}
-	return NULL;
+	return false;
 }
 
-ref_ptr<AnimationPathManipulator> CannonBall::ballPath(Vec3d direction){
+ref_ptr<AnimationPathCallback> CannonBall::ballPath(Vec3d direction){
 	double speed = 150.0;
 	ref_ptr<AnimationPath> ball_path = new AnimationPath();
 	ball_path->setLoopMode(AnimationPath::NO_LOOPING);
@@ -63,7 +63,7 @@ ref_ptr<AnimationPathManipulator> CannonBall::ballPath(Vec3d direction){
 		traj_vec = trajectory(t, direction);
 		ball_path->insert(t, traj_vec);
 	}
-	ref_ptr<AnimationPathManipulator> apcb = new AnimationPathManipulator();
+	ref_ptr<AnimationPathCallback> apcb = new AnimationPathCallback();
 	apcb->setAnimationPath(ball_path);
 	return apcb;
 }

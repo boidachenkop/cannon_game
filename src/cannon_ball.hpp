@@ -28,18 +28,17 @@ public:
 	ref_ptr<MatrixTransform> get();
 	void move(Vec3d direction);
 	Vec3d trajectory(double t, Vec3d direction);
-	ref_ptr<AnimationPathManipulator> ballPath(Vec3d direction);
-	Target* collisionDetected(Vec3d coords); //returns target thet hit or NULL if not
-	ref_ptr< osgGA::AnimationPathManipulator::AnimationCompletedCallback> onAnimationCompleted(Target* collision);
+	ref_ptr<AnimationPathCallback> ballPath(Vec3d direction);
+	bool collisionDetected(Vec3d coords); //returns target thet hit or NULL if not
 
 private:
 	ref_ptr<Group> _root;
 	ref_ptr<MatrixTransform> ball;
 	Vec3d g;
-	double m; // mass
-	double b; // drag coefitient
+	double m; 				// mass
+	double b; 				// drag coefitient
 	Vec3d position;			//position	
-	double speed;	//ball speed 
+	double speed;			//ball speed 
 	std::vector<Target*>* _targets;
 	Target* target_hit;
 };

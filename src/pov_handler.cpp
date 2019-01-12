@@ -1,13 +1,12 @@
 /*
 * @Author: Pavlo Boidachenko
 * @Date:   2019-01-09 14:27:08
-* @Last Modified by:   pavlo
-* @Last Modified time: 2019-01-10 19:23:46
+* @Last Modified by:   Pavlo Boidachenko
+* @Last Modified time: 2019-01-11 13:25:26
 */
 
-#include <iostream>
 #include "pov_handler.hpp"
-#include <osg/io_utils>
+// #include <osg/io_utils>
 
 using namespace osg;
 using osgGA::GUIActionAdapter;

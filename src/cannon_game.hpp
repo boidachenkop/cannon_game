@@ -5,12 +5,15 @@
 #include <osg/ShapeDrawable>
 #include <osg/Group>
 #include <osg/Texture2D>
+#include <osg/TexMat>
 #include <osg/MatrixTransform>
 #include <osgViewer/Viewer>
+#include <cmath>
 
 #include "cannon.hpp"
 #include "pov_handler.hpp"
 #include "skybox.hpp"
+#include "target.hpp"
 
 using namespace osg;
 using osgDB::readNodeFile;
@@ -29,6 +32,7 @@ public:
 	void run();
 private:
 	ref_ptr<Group> root;
+	std::vector<Target*>* targets;
 	Cannon* cannon;
 	ref_ptr<Viewer> viewer;
 	ref_ptr<POVHandler> pov_handler;

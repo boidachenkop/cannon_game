@@ -15,6 +15,7 @@
 #include <cmath>
 #include <chrono> //for time mesurement
 #include <vector>
+#include <thread>
 
 #include "target.hpp"
 
@@ -29,7 +30,8 @@ public:
 	void move(Vec3d direction);
 	Vec3d trajectory(double t, Vec3d direction);
 	ref_ptr<AnimationPathCallback> ballPath(Vec3d direction);
-	bool collisionDetected(Vec3d coords); //returns target thet hit or NULL if not
+	void removeTarget();
+	bool collisionDetected(Vec3d coords, double t); //returns target thet hit or NULL if not
 
 private:
 	ref_ptr<Group> _root;
@@ -41,6 +43,7 @@ private:
 	double speed;			//ball speed 
 	std::vector<Target*>* _targets;
 	Target* target_hit;
+	double time_hit;
 };
 
 #endif //CANNON_BALL_BP
